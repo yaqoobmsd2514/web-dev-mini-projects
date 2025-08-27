@@ -23,3 +23,10 @@ Hi! I'm **Muhammad Yaqoob**, and this repository contains my mini web developmen
 
 ### ✨ Follow My Journey
 This repository will grow as I learn more concepts and complete mini projects to master web development.
+
+---
+
+## 🔗 Connect with Me
+
+- 🌐 [LinkedIn](https://www.linkedin.com/in/yaqoob-m)
+- 💻 [GitHub](https://github.com/yaqoobmsd2514)

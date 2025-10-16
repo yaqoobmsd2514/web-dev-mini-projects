@@ -8,7 +8,7 @@ Hi! I'm **Muhammad Yaqoob**, and this repository contains my mini web developmen
 ---
 
 ## 📂 Project List
-- Digital Clock
+- Happy Teachers Day
 - More projects coming soon...
 
 ---

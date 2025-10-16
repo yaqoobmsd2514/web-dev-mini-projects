@@ -1,0 +1,404 @@
+/* ===========================
+   ANY Group — Enhanced Style
+   ===========================
+   - Uses: flexbox, transitions, keyframe animations, responsive tweaks
+   - Colors: #F5F1E8 (bg), #1A2C5B (nav/text), #C49A49 (accent)
+   - Keep HTML unchanged
+*/
+
+/* Reset + base */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background-color: #F5F1E8;
+  color: #1A2C5B;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height: 1.55;
+}
+
+/* =========================
+   Header & Navigation
+   ========================= */
+.header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px 6%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.90));
+  border-bottom: 3px solid #C49A49;
+  
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(6px);
+  transition: box-shadow .35s ease;
+}
+.header.scrolled { box-shadow: 0 8px 24px rgba(26,44,91,0.08); }
+
+.logo img {
+  width: 96px;
+  height: 96px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #C49A49;
+  padding: 6px;
+  background: #fff;
+  transition: transform .35s ease, box-shadow .35s ease;
+}
+.logo img:hover { transform: rotate(-6deg) scale(1.03); box-shadow: 0 8px 20px rgba(196,154,73,0.12); }
+
+/* nav is centered in your HTML using <center>, we still style anchors */
+.navbar {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.navbar a{
+  color: #1A2C5B;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 10px 12px;
+  border-radius: 8px;
+  transition: background-color .28s ease, color .28s ease, transform .18s ease;
+}
+.navbar a:hover{
+  color: #fff;
+  background-color: #C49A49;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(196,154,73,0.18);
+}
+
+/* small screens: stack nav nicely */
+@media (max-width:640px){
+  .header{ padding: 12px 4%; }
+  .logo img{ width:80px; height:80px; }
+  .navbar a{ padding:8px 10px; font-size:14px; }
+}
+
+/* =========================
+   Hero (big heading with BG)
+   ========================= */
+.hero{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:96px 18px;
+  margin-top: 8px;
+  background: 
+    linear-gradient(0deg, rgba(26,44,91,0.32), rgba(26,44,91,0.12)),
+    url('./any back.jpeg') center/cover no-repeat;
+  color: #C49A49;
+  border-radius: 14px;
+  margin-left: 6%;
+  margin-right: 6%;
+  box-shadow: 0 8px 40px rgba(26,44,91,0.08);
+  position: relative;
+  overflow: hidden;
+}
+.hero h1{
+  font-size: clamp(28px, 4.6vw, 56px);
+  letter-spacing: 1px;
+  line-height: 1.02;
+  margin: 0;
+  font-weight: 800;
+  text-transform: uppercase;
+  text-shadow: 0 8px 30px rgba(10,20,40,0.4);
+  transform: translateY(0);
+  animation: heroFloat 6s ease-in-out infinite;
+}
+@keyframes heroFloat {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0); }
+}
+
+/* =========================
+   Section base
+   ========================= */
+section {
+  padding: 64px 6%;
+}
+section h2{
+  font-size: 1.6rem;
+  color: #1A2C5B;
+  margin-bottom: 14px;
+  letter-spacing: .4px;
+  text-align: center;
+}
+
+/* About */
+.about p {
+  max-width: 1000px;
+  margin: 0 auto;
+  font-size: 1.02rem;
+  color: rgba(26,44,91,0.95);
+  text-align: justify; /* Added for justified alignment */
+}
+
+
+/* =========================
+   Companies grid (6 items)
+   ========================= */
+.companies .company-grid{
+  display:flex;
+  gap: 20px;
+  flex-wrap:wrap;
+  justify-content:center;
+  margin-top: 26px;
+}
+.companies .company-grid > div{
+  width: 150px;
+  text-align:center;
+  transition: transform .28s ease, box-shadow .28s ease;
+}
+.companies .company-grid img{
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 3px solid #C49A49;
+  display:block;
+}
+.companies .company-grid p{
+  margin-top:8px;
+  color:#1A2C5B;
+  font-weight:600;
+}
+.companies .company-grid > div:hover{
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 18px 40px rgba(26,44,91,0.08);
+}
+
+/* =========================
+   Services table (styled)
+   ========================= */
+.services table{
+  width:100%;
+  max-width:1200px;
+  margin: 20px auto 0;
+  border-collapse: collapse;
+  background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(245,241,232,0.9));
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(26,44,91,0.06);
+}
+.services th, .services td{
+  padding: 18px 16px;
+  border-bottom: 1px solid rgba(26,44,91,0.06);
+  text-align:left;
+}
+.services th{
+  background: #1A2C5B;
+  color: #fff;
+  font-weight:700;
+  letter-spacing:.6px;
+}
+.services tr:hover td{ background: rgba(196,154,73,0.04); }
+
+/* =========================
+   Contact (form + newsletter)
+   ========================= */
+.contact-container {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  align-items: center;    /* Center the forms horizontally */
+  justify-content: center;
+  gap: 28px;
+  margin-top: 18px;
+}
+
+.contact-form, .newsletter {
+  width: 100%;
+  max-width: 520px;
+  background: #fff;
+  padding: 18px;
+  border-radius: 12px;
+  border: 2px solid rgba(196,154,73,0.12);
+  box-shadow: 0 10px 30px rgba(26,44,91,0.04);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+/* Center the buttons */
+.contact-form button,
+.newsletter button {
+  display: block;
+  margin: 20px auto 0 auto; /* Top margin + center alignment */
+  background-color: #1A2C5B; /* Dark navy blue */
+  color: #fff;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.contact-form button:hover,
+.newsletter button:hover {
+  background-color: #C49A49; /* Golden brown hover effect */
+  color: #1A2C5B;
+}
+
+
+.contact-form:hover, .newsletter:hover{ transform: translateY(-6px); box-shadow: 0 20px 45px rgba(26,44,91,0.06); }
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea,
+.newsletter input[type="email"]{
+  width:100%;
+  padding:12px 14px;
+  border-radius:8px;
+  border: 2px solid rgba(196,154,73,0.22);
+  background: #fff;
+  margin: 10px 0;
+  font-size: 0.98rem;
+  color: #1A2C5B;
+  transition: box-shadow .18s ease, transform .12s ease;
+}
+.contact-form input:focus, .contact-form textarea:focus, .newsletter input:focus{
+  outline: none;
+  box-shadow: 0 8px 18px rgba(26,44,91,0.08);
+  transform: translateY(-2px);
+}
+
+button{
+  display:inline-block;
+  padding: 10px 18px;
+  background: #1A2C5B;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight:700;
+  cursor:pointer;
+  transition: background .18s ease, transform .12s ease, box-shadow .12s;
+}
+button:hover{ background: #C49A49; transform: translateY(-4px); box-shadow: 0 14px 30px rgba(26,44,91,0.08); }
+
+/* =========================
+   Leaders / Cards
+   ========================= */
+.leaders-container{
+  display:flex;
+  gap: 24px;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin-top: 22px;
+}
+.card {
+  width: 220px;                 /* smaller width */
+  background: #fff;
+  border-radius: 12px;          /* slightly smaller corners */
+  padding: 14px;                /* reduced padding */
+  border: 2px solid #C49A49;    /* slimmer border */
+  box-shadow: 0 8px 28px rgba(26,44,91,0.06);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.card img {
+  width: 100%;
+  height: 50%;                /* slightly shorter image */
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.card h3 {
+  font-size: 1.05rem;
+  margin-bottom: 6px;
+}
+
+.card p {
+  font-size: 0.92rem;
+}
+
+.leaders-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;                    /* balanced spacing */
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+
+.card h3{ text-align:center; margin-bottom:8px; color:#1A2C5B; }
+.card p{ color: rgba(26,44,91,0.86); }
+.card .name{ text-align:right; font-style:italic; color:#C49A49; margin-top:12px; font-weight:700; }
+.card:hover{ transform: translateY(-8px); box-shadow: 0 24px 60px rgba(26,44,91,0.09); }
+
+/* =========================
+   Footer
+   ========================= */
+.footer{
+  background: #1A2C5B;
+  color: #fff;
+  padding: 46px 6%;
+  margin-top: 34px;
+}
+.footer-content{
+  display:flex;
+  gap: 30px;
+  justify-content:space-between;
+  flex-wrap:wrap;
+}
+.footer-content > div{ min-width: 180px; max-width: 300px; }
+.footer-content h4{ color: #C49A49; margin-bottom:12px; }
+.footer a{ color: #fff; text-decoration:none; }
+.copy{ text-align:center; margin-top: 22px; opacity: 0.95; }
+
+/* top button */
+.top-btn{
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  background: #C49A49;
+  color:#fff;
+  width:44px;
+  height:44px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  text-decoration:none;
+  font-size:18px;
+  box-shadow: 0 10px 28px rgba(26,44,91,0.12);
+  transition: transform .18s ease;
+}
+.top-btn:hover{ transform: translateY(-6px); }
+
+/* =========================
+   Responsive tweaks
+   ========================= */
+@media (max-width: 1024px){
+  .hero{ padding: 72px 10%; }
+  .header{ padding:12px 5%; }
+  .companies .company-grid div{ width: 140px; }
+}
+
+@media (max-width: 768px){
+  .header{ flex-direction:column; gap:12px; align-items:center; padding:12px 5%; }
+  .navbar{ gap:10px; }
+  .contact-container{ flex-direction:column; align-items:stretch; }
+  .company-grid{ gap:14px; }
+  .companies .company-grid div{ width: 46%; }
+  .services th, .services td{ padding:12px; }
+  .leaders-container{ gap: 18px; }
+}
+
+@media (max-width: 420px){
+  .companies .company-grid div{ width: 100%; }
+  .hero{ padding:60px 10%; font-size: .95rem; }
+  .card{ width: 100%; }
+}
+
+/* =========================
+   Small accessibility helpers
+   ========================= */
+a:focus, button:focus, input:focus, textarea:focus {
+  outline: 3px solid rgba(196,154,73,0.18);
+  outline-offset: 2px;
+}
